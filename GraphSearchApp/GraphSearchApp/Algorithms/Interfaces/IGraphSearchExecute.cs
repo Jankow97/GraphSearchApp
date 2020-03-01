@@ -9,6 +9,6 @@ namespace GraphSearchApp.Algorithms.Interfaces
 {
     interface IGraphSearchExecute
     {
-        AlgorithmResult ExecuteSearch(Graph graph);
+        AlgorithmResult ExecuteSearch(Graph graph, GraphSearchOptions graphSearchOptions);
     }
 }
