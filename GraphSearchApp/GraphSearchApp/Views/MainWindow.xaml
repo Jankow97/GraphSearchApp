@@ -31,7 +31,7 @@
                    Name="ResultContentTb"></TextBlock>
 
         <DockPanel Grid.Column="1" Grid.Row="0" LastChildFill="True">
-            <Button DockPanel.Dock="Top" Height="70" Margin="4,4,4,20">Upload Content</Button>
+            <Button DockPanel.Dock="Top" Height="70" Margin="4,4,4,20" Click="UploadDataButton_Click">Upload Content</Button>
             <GroupBox VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Stretch" 
                 Height="Auto">
@@ -44,9 +44,27 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <ToggleButton Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,10">Algorithm 1</ToggleButton>
-                    <ToggleButton Grid.Row="1" Height="auto" Margin="0,10">Algorithm 2</ToggleButton>
-                    <ToggleButton Grid.Row="2" Margin="0,10">Algorithm 3</ToggleButton>
+                    <ToggleButton Name="LeastCitiesTb"  
+                                  Grid.Row="0" 
+                                  HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Stretch"
+                                  Margin="4,10" 
+                                  Checked="LeastCitiesAlgorithm_Checked">
+                        Least Cities Traversed
+                    </ToggleButton>
+                    <ToggleButton Name="ShortestRouteTb"  
+                                  Grid.Row="1" 
+                                  Height="auto" 
+                                  Margin="0,10" 
+                                  Checked="ShortestRouteAlgorithm_Checked">
+                        Shortest Route Algorithm
+                    </ToggleButton>
+                    <ToggleButton Name="ShortestRouteWithGeolocationTb"  
+                                  Grid.Row="2" 
+                                  Margin="0,10"
+                                  Checked="ShortestRouteAlgorithmWithGeolocation_Checked">
+                        Shortest Route with Geolocation Algorithm
+                    </ToggleButton>
                 </Grid>
             </GroupBox>
         </DockPanel>

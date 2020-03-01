@@ -69,6 +69,7 @@
     <Compile Include="Dtos\Graph.cs" />
     <Compile Include="Dtos\GraphSearchOptions.cs" />
     <Compile Include="IO\Interfaces\ITextToGraph.cs" />
+    <Compile Include="IO\ReadStandardData.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
