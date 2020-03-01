@@ -10,19 +10,44 @@ namespace GraphSearchApp.Algorithms
 {
     class LeastCitiesAlgorithm : IGraphSearchExecute
     {
-        public AlgorithmResult ExecuteSearch(Graph graph)//, int startingNode, int endingNode)
+        public AlgorithmResult ExecuteSearch(Graph graph, GraphSearchOptions graphSearchOptions)
         {
+            var algorithmResult = new AlgorithmResult();
+            bool found = false;
+
             Queue<int> q = new Queue<int>();
-            q.Enqueue(startingNode);
+            q.Enqueue(graphSearchOptions.StartingNode);
             while (q.Any())
             {
-                List<Connection> v = graphDto.Graph[q.Dequeue()];
-                foreach (var node in v)
+                int currentNode = q.Dequeue();
+
+                algorithmResult.CitiesTraverseOrder.Add(currentNode);
+                List<Connection> connections = graph.AdjacencyList[currentNode];
+                foreach (var node in connections)
                 {
-                    node.CityA = 1;
+                    if (node.CityB == graphSearchOptions.EndingNode)
+                    {
+                        if (found != true)
+                        {
+                            algorithmResult.CitiesTraverseOrder.Add(node.CityB);
+                        }
+                        found = true;
+                    }
+                    q.Enqueue(node.CityB);
+                }
+
+                if (found)
+                {
+                    break;
                 }
             }
-            throw new NotImplementedException();
+
+            if (!found)
+            {
+                return null;
+            }
+
+            return algorithmResult;
         }
     }
 }
