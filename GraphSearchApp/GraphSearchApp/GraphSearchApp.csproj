@@ -67,6 +67,7 @@
     <Compile Include="Dtos\AlgorithmResult.cs" />
     <Compile Include="Dtos\Connection.cs" />
     <Compile Include="Dtos\Graph.cs" />
+    <Compile Include="Dtos\GraphSearchOptions.cs" />
     <Compile Include="IO\Interfaces\ITextToGraph.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -99,9 +100,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-    <Folder Include="Algorithms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
