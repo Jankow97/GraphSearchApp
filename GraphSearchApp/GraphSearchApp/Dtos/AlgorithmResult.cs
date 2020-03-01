@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphSearchApp.Dtos
 {
-    class AlgorithmResult
+    public class AlgorithmResult
     {
         public int ShortestRoute { get; set; }
         public List<int> CitiesTraverseOrder { get; set; }

@@ -2,7 +2,7 @@
 
 namespace GraphSearchApp.IO.Interfaces
 {
-    interface ITextToGraph
+    public interface ITextToGraph
     {
         Graph ReadData(string dataToRead);
     }

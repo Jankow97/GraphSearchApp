@@ -7,7 +7,7 @@ using GraphSearchApp.Dtos;
 
 namespace GraphSearchApp.Algorithms.Interfaces
 {
-    interface IGraphSearchExecute
+    public interface IGraphSearchExecute
     {
         AlgorithmResult ExecuteSearch(Graph graph, GraphSearchOptions graphSearchOptions);
     }
