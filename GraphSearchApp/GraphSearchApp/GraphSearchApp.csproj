@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Dtos\AlgorithmResult.cs" />
     <Compile Include="Dtos\Connection.cs" />
     <Compile Include="Dtos\Graph.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
