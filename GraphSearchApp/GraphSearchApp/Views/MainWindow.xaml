@@ -1,0 +1,55 @@
+﻿<Window x:Class="GraphSearchApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraphSearchApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1020"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Column="0" Grid.Row="0" 
+               Margin="10"
+               Source="C:\Users\JanKo\Desktop\Good jpgs\life.jpg"></Image>
+
+        <TextBlock Grid.Column="0" Grid.Row="1"
+                   Margin="10"
+                   Name="UploadedFileContentTb"></TextBlock>
+
+        <TextBlock Grid.Column="1" Grid.Row="1"
+                   Margin="10"
+                   Name="ResultContentTb"></TextBlock>
+
+        <DockPanel Grid.Column="1" Grid.Row="0" LastChildFill="True">
+            <Button DockPanel.Dock="Top" Height="70" Margin="4,4,4,20">Upload Content</Button>
+            <GroupBox VerticalAlignment="Stretch" 
+                VerticalContentAlignment="Stretch" 
+                Height="Auto">
+                <GroupBox.Header>
+                    <TextBlock FontWeight="Bold" Text="Choose an algorithm"></TextBlock>
+                </GroupBox.Header>
+                <Grid DockPanel.Dock="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ToggleButton Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,10">Algorithm 1</ToggleButton>
+                    <ToggleButton Grid.Row="1" Height="auto" Margin="0,10">Algorithm 2</ToggleButton>
+                    <ToggleButton Grid.Row="2" Margin="0,10">Algorithm 3</ToggleButton>
+                </Grid>
+            </GroupBox>
+        </DockPanel>
+
+    </Grid>
+</Window>
