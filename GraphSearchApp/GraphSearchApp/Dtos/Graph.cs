@@ -8,6 +8,6 @@ namespace GraphSearchApp.Dtos
 {
     class Graph
     {
-        public List<List<Connection>> Graph { get; set; }
+        public List<List<Connection>> AdjacencyList { get; set; }
     }
 }
