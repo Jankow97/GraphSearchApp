@@ -34,7 +34,13 @@ namespace GraphSearchApp
 
         private void UploadDataButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                //txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+                data = File.ReadAllText(openFileDialog.FileName);
+                UploadedFileContentTb.Text = data;
+            }
         }
 
         private void LeastCitiesAlgorithm_Checked(object sender, RoutedEventArgs e)
