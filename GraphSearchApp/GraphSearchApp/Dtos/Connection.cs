@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphSearchApp.Dtos
 {
-    class Connection
+    public class Connection
     {
         public int CityA { get; set; }
         public int CityB { get; set; }

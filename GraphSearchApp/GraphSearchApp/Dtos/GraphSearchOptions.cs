@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphSearchApp.Dtos
 {
-    class GraphSearchOptions
+    public class GraphSearchOptions
     {
         public int StartingNode { get; set; }
         public int EndingNode { get; set; }
