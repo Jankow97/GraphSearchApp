@@ -8,6 +8,11 @@ namespace GraphSearchApp.Dtos
 {
     public class AlgorithmResult
     {
+        public AlgorithmResult()
+        {
+            ShortestRoute = 0;
+            CitiesTraverseOrder = new List<int>();
+        }
         public int ShortestRoute { get; set; }
         public List<int> CitiesTraverseOrder { get; set; }
     }
