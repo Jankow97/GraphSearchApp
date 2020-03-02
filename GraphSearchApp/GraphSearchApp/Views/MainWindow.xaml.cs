@@ -55,7 +55,7 @@ namespace GraphSearchApp
                 {
                     cities += city + " ";
                 }
-                string resultText = ar.CitiesTraverseOrder.Count + " " + ar.ShortestRoute + Environment.NewLine + cities;
+                string resultText = (ar.CitiesTraverseOrder.Count - 2) + " " + ar.ShortestRoute + Environment.NewLine + cities;
                 ResultContentTb.Text = resultText;
             //}
             //catch (Exception ex)
