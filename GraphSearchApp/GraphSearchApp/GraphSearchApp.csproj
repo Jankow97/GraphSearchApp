@@ -61,6 +61,7 @@
     </Page>
     <Compile Include="Algorithms\Interfaces\IGraphSearchExecute.cs" />
     <Compile Include="Algorithms\LeastCitiesAlgorithm.cs" />
+    <Compile Include="Algorithms\ShortestRoutesAlgorithm.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
