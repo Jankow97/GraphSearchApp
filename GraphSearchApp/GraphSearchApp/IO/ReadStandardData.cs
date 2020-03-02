@@ -10,7 +10,7 @@ namespace GraphSearchApp.IO
 {
     class ReadStandardData : ITextToGraph
     {
-        public Graph ReadData(string dataToRead)
+        public ReadData ReadData(string dataToRead)
         {
             Graph graph = new Graph()
             {
@@ -56,11 +56,18 @@ namespace GraphSearchApp.IO
                 //}
             }
 
-            string[] road = data[1 + numberOfConnections].Split(new char[] { ' ' }); // todo: finish
-            //road[0] is a starting node
-            //road[1] is an ending node
+            string[] road = data[1 + numberOfConnections].Split(new char[] { ' ' });
+            var readData = new ReadData()
+            {
+                Graph = graph,
+                GraphSearchOptions = new GraphSearchOptions()
+                {
+                    StartingNode = int.Parse(road[0]),
+                    EndingNode = int.Parse(road[1])
+                }
+            };
 
-            return graph;
+            return readData;
         }
     }
 }
