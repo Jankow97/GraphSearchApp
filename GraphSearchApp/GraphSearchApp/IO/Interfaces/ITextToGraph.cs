@@ -4,6 +4,6 @@ namespace GraphSearchApp.IO.Interfaces
 {
     public interface ITextToGraph
     {
-        Graph ReadData(string dataToRead);
+        ReadData ReadData(string dataToRead);
     }
 }

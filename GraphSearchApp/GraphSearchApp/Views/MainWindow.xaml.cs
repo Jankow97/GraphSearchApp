@@ -48,12 +48,8 @@ namespace GraphSearchApp
             //try
             //{
                 ITextToGraph textToGraph = new ReadStandardData();
-                var ar = graphSearchExecute.ExecuteSearch(textToGraph.ReadData(data), 
-                    new GraphSearchOptions()
-                    {
-                        StartingNode = 1,
-                        EndingNode = 7
-                    });
+                ReadData readData = textToGraph.ReadData(data);
+                var ar = graphSearchExecute.ExecuteSearch(readData.Graph, readData.GraphSearchOptions);
                 string cities = "";
                 foreach (var city in ar.CitiesTraverseOrder)
                 {
@@ -64,7 +60,7 @@ namespace GraphSearchApp
             //}
             //catch (Exception ex)
             //{
-            //    throw;
+            //    throw ex;
             //}
         }
 
