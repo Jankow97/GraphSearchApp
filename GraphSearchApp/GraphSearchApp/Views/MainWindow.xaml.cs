@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,7 +15,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GraphSearchApp.Algorithms;
 using GraphSearchApp.Algorithms.Interfaces;
+using GraphSearchApp.Dtos;
+using GraphSearchApp.IO;
+using GraphSearchApp.IO.Interfaces;
 using Microsoft.Win32;
 
 namespace GraphSearchApp
@@ -25,7 +30,7 @@ namespace GraphSearchApp
     public partial class MainWindow : Window
     {
         private string data = "";
-        private IGraphSearchExecute graphSearchExecute = null;
+        private IGraphSearchExecute graphSearchExecute = new LeastCitiesAlgorithm();
 
         public MainWindow()
         {
@@ -37,17 +42,36 @@ namespace GraphSearchApp
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                //txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
                 data = File.ReadAllText(openFileDialog.FileName);
                 UploadedFileContentTb.Text = data;
             }
+            //try
+            //{
+                ITextToGraph textToGraph = new ReadStandardData();
+                var ar = graphSearchExecute.ExecuteSearch(textToGraph.ReadData(data), 
+                    new GraphSearchOptions()
+                    {
+                        StartingNode = 1,
+                        EndingNode = 7
+                    });
+                string cities = "";
+                foreach (var city in ar.CitiesTraverseOrder)
+                {
+                    cities += city + " ";
+                }
+                string resultText = ar.CitiesTraverseOrder.Count + " " + ar.ShortestRoute + Environment.NewLine + cities;
+                ResultContentTb.Text = resultText;
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
         }
 
         private void LeastCitiesAlgorithm_Checked(object sender, RoutedEventArgs e)
         {
             UncheckToggleButton(ShortestRouteTb);
             UncheckToggleButton(ShortestRouteWithGeolocationTb);
-            graphSearchExecute = new LeastCitiesAlgorithm();
         }
 
         private void ShortestRouteAlgorithm_Checked(object sender, RoutedEventArgs e)
@@ -64,7 +88,7 @@ namespace GraphSearchApp
 
         private void UncheckToggleButton(ToggleButton tb)
         {
-            if (tb.IsChecked ?? false)
+            if (tb?.IsChecked ?? false)
             {
                 tb.IsChecked = false;
             }

@@ -49,6 +49,7 @@
                                   HorizontalAlignment="Stretch" 
                                   VerticalAlignment="Stretch"
                                   Margin="4,10" 
+                                  IsChecked="True"
                                   Checked="LeastCitiesAlgorithm_Checked">
                         Least Cities Traversed
                     </ToggleButton>
