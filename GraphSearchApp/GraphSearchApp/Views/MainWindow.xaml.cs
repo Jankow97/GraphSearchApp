@@ -66,28 +66,29 @@ namespace GraphSearchApp
 
         private void LeastCitiesAlgorithm_Checked(object sender, RoutedEventArgs e)
         {
-            UncheckToggleButton(ShortestRouteTb);
-            UncheckToggleButton(ShortestRouteWithGeolocationTb);
+            graphSearchExecute = new LeastCitiesAlgorithm();
+            //UncheckToggleButton(ShortestRouteTb);
+            //UncheckToggleButton(ShortestRouteWithGeolocationTb);
         }
 
         private void ShortestRouteAlgorithm_Checked(object sender, RoutedEventArgs e)
         {
-            UncheckToggleButton(LeastCitiesTb);
-            UncheckToggleButton(ShortestRouteWithGeolocationTb);
+            //UncheckToggleButton(LeastCitiesTb);
+            //UncheckToggleButton(ShortestRouteWithGeolocationTb);
         }
 
         private void ShortestRouteAlgorithmWithGeolocation_Checked(object sender, RoutedEventArgs e)
         {
-            UncheckToggleButton(LeastCitiesTb);
-            UncheckToggleButton(ShortestRouteTb);
+            //UncheckToggleButton(LeastCitiesTb);
+            //UncheckToggleButton(ShortestRouteTb);
         }
 
-        private void UncheckToggleButton(ToggleButton tb)
-        {
-            if (tb?.IsChecked ?? false)
-            {
-                tb.IsChecked = false;
-            }
-        }
+        //private void UncheckToggleButton(ToggleButton tb)
+        //{
+        //    if (tb?.IsChecked ?? false)
+        //    {
+        //        tb.IsChecked = false;
+        //    }
+        //}
     }
 }

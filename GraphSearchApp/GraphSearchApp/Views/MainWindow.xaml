@@ -44,28 +44,34 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <ToggleButton Name="LeastCitiesTb"  
-                                  Grid.Row="0" 
-                                  HorizontalAlignment="Stretch" 
-                                  VerticalAlignment="Stretch"
-                                  Margin="4,10" 
-                                  IsChecked="True"
-                                  Checked="LeastCitiesAlgorithm_Checked">
-                        Least Cities Traversed
-                    </ToggleButton>
-                    <ToggleButton Name="ShortestRouteTb"  
-                                  Grid.Row="1" 
-                                  Height="auto" 
-                                  Margin="0,10" 
-                                  Checked="ShortestRouteAlgorithm_Checked">
-                        Shortest Route Algorithm
-                    </ToggleButton>
-                    <ToggleButton Name="ShortestRouteWithGeolocationTb"  
-                                  Grid.Row="2" 
-                                  Margin="0,10"
-                                  Checked="ShortestRouteAlgorithmWithGeolocation_Checked">
-                        Shortest Route with Geolocation Algorithm
-                    </ToggleButton>
+                    <!-- In need of StaticResource change, change to: BasedOn="{x:Type ToggleButton}" -->
+                    <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
+                                 GroupName="Algorithm"
+                                 Name="LeastCitiesTb"  
+                                 Grid.Row="0" 
+                                 HorizontalAlignment="Stretch" 
+                                 VerticalAlignment="Stretch"
+                                 Margin="4,10" 
+                                 IsChecked="True"
+                                 Checked="LeastCitiesAlgorithm_Checked"
+                                 Content="Least Cities Traversed"/>
+                    <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
+                                 GroupName="Algorithm"
+                                 Name="ShortestRouteTb"  
+                                 Grid.Row="1" 
+                                 Height="auto" 
+                                 Margin="0,10" 
+                                 Checked="ShortestRouteAlgorithm_Checked"
+                                 Content="Shortest Route Algorithm"
+                                 IsEnabled="False"/>
+                    <RadioButton Style="{StaticResource {x:Type ToggleButton}}"
+                                 GroupName="Algorithm"
+                                 Name="ShortestRouteWithGeolocationTb"  
+                                 Grid.Row="2" 
+                                 Margin="0,10"
+                                 Checked="ShortestRouteAlgorithmWithGeolocation_Checked"
+                                 Content="Shortest Route with Geolocation Algorithm"
+                                 IsEnabled="False"/>
                 </Grid>
             </GroupBox>
         </DockPanel>
