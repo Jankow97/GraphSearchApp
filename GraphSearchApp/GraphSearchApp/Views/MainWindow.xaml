@@ -62,14 +62,16 @@
                                  Height="auto" 
                                  Margin="0,10" 
                                  Checked="ShortestRouteAlgorithm_Checked"
-                                 Content="Shortest Route Algorithm"/>
+                                 Content="Shortest Route Algorithm"
+                                 IsEnabled="False"/>
                     <RadioButton Style="{StaticResource {x:Type ToggleButton}}"
                                  GroupName="Algorithm"
                                  Name="ShortestRouteWithGeolocationTb"  
                                  Grid.Row="2" 
                                  Margin="0,10"
                                  Checked="ShortestRouteAlgorithmWithGeolocation_Checked"
-                                 Content="Shortest Route with Geolocation Algorithm"/>
+                                 Content="Shortest Route with Geolocation Algorithm"
+                                 IsEnabled="False"/>
                 </Grid>
             </GroupBox>
         </DockPanel>
