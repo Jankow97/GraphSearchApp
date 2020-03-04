@@ -45,10 +45,14 @@ namespace GraphSearchApp
                 data = File.ReadAllText(openFileDialog.FileName);
                 UploadedFileContentTb.Text = data;
             }
-            //try
-            //{
+            try
+            {
                 ITextToGraph textToGraph = new ReadStandardData();
                 ReadData readData = textToGraph.ReadData(data);
+                if (readData.Graph == null || readData.GraphSearchOptions == null)
+                {
+                    throw new Exception();
+                }
                 var ar = graphSearchExecute.ExecuteSearch(readData.Graph, readData.GraphSearchOptions);
                 string cities = "";
                 foreach (var city in ar.CitiesTraverseOrder)
@@ -57,11 +61,11 @@ namespace GraphSearchApp
                 }
                 string resultText = (ar.CitiesTraverseOrder.Count - 2) + " " + ar.ShortestRoute + Environment.NewLine + cities;
                 ResultContentTb.Text = resultText;
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+            }
         }
 
         private void LeastCitiesAlgorithm_Checked(object sender, RoutedEventArgs e)

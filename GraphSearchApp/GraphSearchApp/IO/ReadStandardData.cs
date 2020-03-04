@@ -49,30 +49,30 @@ namespace GraphSearchApp.IO
                 {
                     string line = data[i];
                     string[] singleStrings = line.Split(new char[] { ' ' });
-                    //try
-                    //{
-                    var cityA = int.Parse(singleStrings[0]);
-                    var cityB = int.Parse(singleStrings[1]);
-                    var distance = int.Parse(singleStrings[2]);
-                    Connection connection = new Connection()
+                    try
                     {
-                        CityA = cityA,
-                        CityB = cityB,
-                        Distance = distance
-                    };
-                    graph.AdjacencyList[connection.CityA - 1].Add(connection);
-                    connection = new Connection()
+                        var cityA = int.Parse(singleStrings[0]);
+                        var cityB = int.Parse(singleStrings[1]);
+                        var distance = int.Parse(singleStrings[2]);
+                        Connection connection = new Connection()
+                        {
+                            CityA = cityA,
+                            CityB = cityB,
+                            Distance = distance
+                        };
+                        graph.AdjacencyList[connection.CityA - 1].Add(connection);
+                        connection = new Connection()
+                        {
+                            CityA = cityB,
+                            CityB = cityA,
+                            Distance = distance
+                        };
+                        graph.AdjacencyList[connection.CityA - 1].Add(connection); //CityA is now different
+                    }
+                    catch (Exception e)
                     {
-                        CityA = cityB,
-                        CityB = cityA,
-                        Distance = distance
-                    };
-                    graph.AdjacencyList[connection.CityA - 1].Add(connection); //CityA is now different
-                                                                               //}
-                                                                               //catch (Exception e)
-                                                                               //{
-                                                                               //    throw; // todo
-                                                                               //}
+                        throw;
+                    }
                 }
 
                 string[] road = data[1 + numberOfConnections].Split(new char[] { ' ' });
