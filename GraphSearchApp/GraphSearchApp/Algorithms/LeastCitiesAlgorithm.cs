@@ -36,7 +36,7 @@ namespace GraphSearchApp.Algorithms
             while (q.Any() && q.Peek() != graphSearchOptions.EndingNode - 1)
             {
                 int currentNode = q.Dequeue();
-                visited[currentNode - 1] = true;
+                //visited[currentNode - 1] = true;
 
                 List<Connection> connections = graph.GetNodeList(currentNode);
                 foreach (var node in connections)
