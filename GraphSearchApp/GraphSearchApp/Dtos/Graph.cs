@@ -19,7 +19,7 @@ namespace GraphSearchApp.Dtos
 
         public void AddDirectedConnection(Connection connection)
         {
-            AdjacencyList[connection.CityA - 1].Add(new Connection(connection.CityA - 1, connection.CityB - 1, connection.Distance));
+            AdjacencyList[connection.CityA - 1].Add(new Connection(connection.CityA, connection.CityB, connection.Distance));
         }
 
         public void AddUndirectedConnection(Connection connection)

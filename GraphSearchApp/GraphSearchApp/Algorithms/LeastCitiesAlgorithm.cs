@@ -41,17 +41,17 @@ namespace GraphSearchApp.Algorithms
                 List<Connection> connections = graph.GetNodeList(currentNode);
                 foreach (var node in connections)
                 {
-                    if (!WasScheduled(node.CityB) || (moves[node.CityB] == moves[node.CityA] + 1 && distances[node.CityB] > distances[node.CityA] + node.Distance))
+                    if (!WasScheduled(node.CityB) || (moves[node.CityB - 1] == moves[node.CityA - 1] + 1 && distances[node.CityB - 1] > distances[node.CityA - 1] + node.Distance))
                     {
-                        predecessor[node.CityB] = node.CityA;
-                        distances[node.CityB] = distances[node.CityA] + node.Distance;
-                        moves[node.CityB] = moves[node.CityA] + 1;
-                        if (node.CityB == graphSearchOptions.EndingNode - 1)
+                        predecessor[node.CityB - 1] = node.CityA - 1;
+                        distances[node.CityB - 1] = distances[node.CityA - 1] + node.Distance;
+                        moves[node.CityB - 1] = moves[node.CityA - 1] + 1;
+                        if (node.CityB == graphSearchOptions.EndingNode)
                         {
                             found = true;
                         }
                         if(!WasScheduled(node.CityB))
-                            ScheduleNodeToVisit(node.CityB + 1);
+                            ScheduleNodeToVisit(node.CityB);
                     }
                 }
             }
@@ -84,7 +84,7 @@ namespace GraphSearchApp.Algorithms
 
         private bool WasScheduled(int node)
         {
-            if (scheduled[node])
+            if (scheduled[node - 1])
                 return true;
             else
                 return false;
