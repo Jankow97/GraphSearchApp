@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using GraphSearchApp.Algorithms;
@@ -44,11 +46,13 @@ namespace GraphSearchApp.Helpers
                 }
                 var ar = _graphSearchExecute.ExecuteSearch(readData.Graph, readData.GraphSearchOptions);
                 string cities = "";
+                // todo: StringBuilder
                 foreach (var city in ar.CitiesTraverseOrder)
                 {
                     cities += city + " ";
                 }
                 string resultText = (ar.CitiesTraverseOrder.Count - 2) + " " + ar.ShortestRoute + Environment.NewLine + cities;
+                // resultText += Environment.NewLine + Environment.NewLine + timeElapsed + Environment.NewLine + Environment.NewLine;
                 _mainWindow.ResultContentTb.Text = resultText;
             }
             catch (Exception ex)
