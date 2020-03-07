@@ -39,7 +39,6 @@ namespace GraphSearchApp
             _helper = new MainWindowHelper(this);
             InitializeComponent();
         }
-
         private void UploadDataButton_Click(object sender, RoutedEventArgs e) => 
             _helper.UploadData();
 

@@ -4,8 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using GraphSearchApp.Algorithms;
 using GraphSearchApp.Algorithms.Interfaces;
@@ -29,7 +27,10 @@ namespace GraphSearchApp.Helpers
 
         public void UploadData()
         {
+            var stopwatch = Stopwatch.StartNew();
+
             string data = "";
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
@@ -59,6 +60,8 @@ namespace GraphSearchApp.Helpers
             {
                 //throw ex;
             }
+            stopwatch.Stop();
+            MessageBox.Show(stopwatch.Elapsed.ToString());
         }
 
         public void ChooseLeastCities()
