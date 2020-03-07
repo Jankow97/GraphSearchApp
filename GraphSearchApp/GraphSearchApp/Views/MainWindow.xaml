@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:GraphSearchApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1020"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{wpf:MaterialDesignFont}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -31,7 +38,12 @@
                    Name="ResultContentTb"></TextBlock>
 
         <DockPanel Grid.Column="1" Grid.Row="0" LastChildFill="True">
-            <Button DockPanel.Dock="Top" Height="70" Margin="4,4,4,20" Click="UploadDataButton_Click">Upload Content</Button>
+            <Button DockPanel.Dock="Top" 
+                    Height="70" 
+                    Margin="4,4,4,20" 
+                    Click="UploadDataButton_Click">
+                Upload Content
+            </Button>
             <GroupBox VerticalAlignment="Stretch" 
                 VerticalContentAlignment="Stretch" 
                 Height="Auto">
@@ -45,8 +57,7 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <!-- In need of StaticResource change, change to: BasedOn="{x:Type ToggleButton}" -->
-                    <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
-                                 GroupName="Algorithm"
+                    <RadioButton GroupName="Algorithm"
                                  Name="LeastCitiesTb"  
                                  Grid.Row="0" 
                                  HorizontalAlignment="Stretch" 
@@ -55,8 +66,7 @@
                                  IsChecked="True"
                                  Checked="LeastCitiesAlgorithm_Checked"
                                  Content="Least Cities Traversed"/>
-                    <RadioButton Style="{StaticResource {x:Type ToggleButton}}" 
-                                 GroupName="Algorithm"
+                    <RadioButton GroupName="Algorithm"
                                  Name="ShortestRouteTb"  
                                  Grid.Row="1" 
                                  Height="auto" 
@@ -64,8 +74,7 @@
                                  Checked="ShortestRouteAlgorithm_Checked"
                                  Content="Shortest Route Algorithm"
                                  IsEnabled="False"/>
-                    <RadioButton Style="{StaticResource {x:Type ToggleButton}}"
-                                 GroupName="Algorithm"
+                    <RadioButton GroupName="Algorithm"
                                  Name="ShortestRouteWithGeolocationTb"  
                                  Grid.Row="2" 
                                  Margin="0,10"
