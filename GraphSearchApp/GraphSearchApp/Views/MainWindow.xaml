@@ -26,8 +26,7 @@
         </Grid.RowDefinitions>
 
         <Image Grid.Column="0" Grid.Row="0" 
-               Margin="10"
-               Source="C:\Users\JanKo\Desktop\Good jpgs\life.jpg"></Image>
+               Margin="10"></Image>
 
         <TextBlock Grid.Column="0" Grid.Row="1"
                    Margin="10"
