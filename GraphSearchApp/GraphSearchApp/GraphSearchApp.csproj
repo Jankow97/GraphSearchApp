@@ -81,6 +81,8 @@
     <Compile Include="Dtos\Graph.cs" />
     <Compile Include="Dtos\GraphSearchOptions.cs" />
     <Compile Include="Dtos\ReadData.cs" />
+    <Compile Include="Helpers\Interfaces\IMainWindowHelper.cs" />
+    <Compile Include="Helpers\MainWindowHelper.cs" />
     <Compile Include="IO\Interfaces\ITextToGraph.cs" />
     <Compile Include="IO\ReadStandardData.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
