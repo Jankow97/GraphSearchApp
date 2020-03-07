@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -39,16 +40,16 @@ namespace GraphSearchApp
             InitializeComponent();
         }
 
-        private void UploadDataButton_Click() => 
+        private void UploadDataButton_Click(object sender, RoutedEventArgs e) => 
             _helper.UploadData();
 
-        private void LeastCitiesAlgorithm_Checked() => 
+        private void LeastCitiesAlgorithm_Checked(object sender, RoutedEventArgs e) => 
             _helper.ChooseLeastCities();
 
-        private void ShortestRouteAlgorithm_Checked() =>
+        private void ShortestRouteAlgorithm_Checked(object sender, RoutedEventArgs e) =>
             _helper.ChooseShortestRoutes();
 
-        private void ShortestRouteAlgorithmWithGeolocation_Checked() =>
+        private void ShortestRouteAlgorithmWithGeolocation_Checked(object sender, RoutedEventArgs e) =>
             _helper.ChooseShortestRoutesGeolocation();
     }
 }
