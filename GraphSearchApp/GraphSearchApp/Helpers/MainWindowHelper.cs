@@ -27,8 +27,6 @@ namespace GraphSearchApp.Helpers
 
         public void UploadData()
         {
-            var stopwatch = Stopwatch.StartNew();
-
             string data = "";
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -45,23 +43,24 @@ namespace GraphSearchApp.Helpers
                 {
                     throw new Exception();
                 }
+
+                var stopWatch = Stopwatch.StartNew();
                 var ar = _graphSearchExecute.ExecuteSearch(readData.Graph, readData.GraphSearchOptions);
-                string cities = "";
-                // todo: StringBuilder
+                stopWatch.Stop();
+                var stringBuilder = new StringBuilder();
                 foreach (var city in ar.CitiesTraverseOrder)
                 {
-                    cities += city + " ";
+                    stringBuilder.Append(city + " ");
                 }
-                string resultText = (ar.CitiesTraverseOrder.Count - 2) + " " + ar.ShortestRoute + Environment.NewLine + cities;
-                // resultText += Environment.NewLine + Environment.NewLine + timeElapsed + Environment.NewLine + Environment.NewLine;
+                string resultText = (ar.CitiesTraverseOrder.Count - 2) + " " + ar.ShortestRoute + Environment.NewLine + stringBuilder.ToString();
+                var timeElapsed = stopWatch.Elapsed;
+                resultText += Environment.NewLine + Environment.NewLine + timeElapsed + Environment.NewLine + Environment.NewLine;
                 _mainWindow.ResultContentTb.Text = resultText;
             }
             catch (Exception ex)
             {
                 //throw ex;
             }
-            stopwatch.Stop();
-            MessageBox.Show(stopwatch.Elapsed.ToString());
         }
 
         public void ChooseLeastCities()
