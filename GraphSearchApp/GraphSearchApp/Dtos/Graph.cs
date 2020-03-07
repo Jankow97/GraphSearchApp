@@ -8,6 +8,31 @@ namespace GraphSearchApp.Dtos
 {
     public class Graph
     {
-        public List<List<Connection>> AdjacencyList { get; set; }
+        private List<List<Connection>> AdjacencyList { get; set; }
+
+        public Graph()
+        {
+            AdjacencyList = new List<List<Connection>>();
+        }
+
+        public void DeclareNewNode() => AdjacencyList.Add(new List<Connection>());
+
+        public void AddDirectedConnection(Connection connection)
+        {
+            AdjacencyList[connection.CityA - 1].Add(new Connection(connection.CityA - 1, connection.CityB - 1, connection.Distance));
+        }
+
+        public void AddUndirectedConnection(Connection connection)
+        {
+            AddDirectedConnection(new Connection(connection.CityA, connection.CityB, connection.Distance));
+            AddDirectedConnection(new Connection(connection.CityB, connection.CityA, connection.Distance));
+        }
+
+        public List<Connection> GetNodeList(int nodeNumber)
+        {
+            return AdjacencyList[nodeNumber - 1];
+        }
+
+        public int Count => AdjacencyList.Count;
     }
 }

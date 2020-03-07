@@ -13,10 +13,7 @@ namespace GraphSearchApp.IO
     {
         public ReadData ReadData(string dataToRead)
         {
-            Graph graph = new Graph()
-            {
-                AdjacencyList = new List<List<Connection>>()
-            };
+            Graph graph = new Graph();
             try
             {
                 string[] data = dataToRead.Split(new string[] {"\r\n"}, StringSplitOptions.None);
@@ -29,7 +26,7 @@ namespace GraphSearchApp.IO
                     var numberOfCities = int.Parse((string)singleNumbers[0]);
                     for (int i = 0; i < numberOfCities; i++)
                     {
-                        graph.AdjacencyList.Add(new List<Connection>());
+                        graph.DeclareNewNode();
                     }
                 }
                 catch
@@ -54,23 +51,11 @@ namespace GraphSearchApp.IO
                         var cityA = int.Parse(singleStrings[0]);
                         var cityB = int.Parse(singleStrings[1]);
                         var distance = int.Parse(singleStrings[2]);
-                        Connection connection = new Connection()
-                        {
-                            CityA = cityA,
-                            CityB = cityB,
-                            Distance = distance
-                        };
-                        graph.AdjacencyList[connection.CityA - 1].Add(connection);
-                        connection = new Connection()
-                        {
-                            CityA = cityB,
-                            CityB = cityA,
-                            Distance = distance
-                        };
-                        graph.AdjacencyList[connection.CityA - 1].Add(connection); //CityA is now different
+                        graph.AddUndirectedConnection(new Connection(cityA, cityB, distance));
                     }
                     catch (Exception e)
                     {
+                        MessageBox.Show(e.StackTrace);
                         throw;
                     }
                 }
@@ -88,9 +73,10 @@ namespace GraphSearchApp.IO
 
                 return readData;
             }
-            catch
+            catch (Exception e)
             {
-                MessageBox.Show("Problem with the file.");
+
+                MessageBox.Show("Problem with the file." + e.StackTrace);
                 return null;
             }
         }

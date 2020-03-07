@@ -20,11 +20,11 @@ namespace GraphSearchApp.Algorithms
         public AlgorithmResult ExecuteSearch(Graph graph, GraphSearchOptions graphSearchOptions)
         {
             q = new Queue<int>();
-            scheduled = new bool[graph.AdjacencyList.Count];
-            visited = new bool[graph.AdjacencyList.Count];
-            predecessor = new int[graph.AdjacencyList.Count];
-            distances = new int[graph.AdjacencyList.Count];
-            moves = new int[graph.AdjacencyList.Count];
+            scheduled = new bool[graph.Count];
+            visited = new bool[graph.Count];
+            predecessor = new int[graph.Count];
+            distances = new int[graph.Count];
+            moves = new int[graph.Count];
 
             var algorithmResult = new AlgorithmResult();
             bool found = false;
@@ -33,25 +33,25 @@ namespace GraphSearchApp.Algorithms
             predecessor[graphSearchOptions.StartingNode - 1] = graphSearchOptions.StartingNode - 1;
             moves[graphSearchOptions.StartingNode - 1] = 0;
 
-            while (q.Any() && q.Peek() != graphSearchOptions.EndingNode)
+            while (q.Any() && q.Peek() != graphSearchOptions.EndingNode - 1)
             {
                 int currentNode = q.Dequeue();
                 visited[currentNode - 1] = true;
 
-                List<Connection> connections = graph.AdjacencyList[currentNode - 1];
+                List<Connection> connections = graph.GetNodeList(currentNode);
                 foreach (var node in connections)
                 {
-                    if (!WasScheduled(node.CityB) || (moves[node.CityB - 1] == moves[node.CityA - 1] + 1 && distances[node.CityB - 1] > distances[node.CityA - 1] + node.Distance))
+                    if (!WasScheduled(node.CityB) || (moves[node.CityB] == moves[node.CityA] + 1 && distances[node.CityB] > distances[node.CityA] + node.Distance))
                     {
-                        predecessor[node.CityB - 1] = node.CityA - 1;
-                        distances[node.CityB - 1] = distances[node.CityA - 1] + node.Distance;
-                        moves[node.CityB - 1] = moves[node.CityA - 1] + 1;
-                        if (node.CityB == graphSearchOptions.EndingNode)
+                        predecessor[node.CityB] = node.CityA;
+                        distances[node.CityB] = distances[node.CityA] + node.Distance;
+                        moves[node.CityB] = moves[node.CityA] + 1;
+                        if (node.CityB == graphSearchOptions.EndingNode - 1)
                         {
                             found = true;
                         }
                         if(!WasScheduled(node.CityB))
-                            ScheduleNodeToVisit(node.CityB);
+                            ScheduleNodeToVisit(node.CityB + 1);
                     }
                 }
             }
@@ -76,7 +76,7 @@ namespace GraphSearchApp.Algorithms
 
         private bool WasVisited(int node)
         {
-            if (visited[node - 1])
+            if (visited[node])
                 return true;
             else
                 return false;
@@ -84,7 +84,7 @@ namespace GraphSearchApp.Algorithms
 
         private bool WasScheduled(int node)
         {
-            if (scheduled[node - 1])
+            if (scheduled[node])
                 return true;
             else
                 return false;
@@ -93,7 +93,7 @@ namespace GraphSearchApp.Algorithms
         private void ScheduleNodeToVisit(int node)
         {
             q.Enqueue(node);
-            scheduled[node - 1] = true; // todo: move to functions and private fields
+            scheduled[node - 1] = true;
         }
     }
 }

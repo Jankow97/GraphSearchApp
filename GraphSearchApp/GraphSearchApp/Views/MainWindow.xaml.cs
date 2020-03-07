@@ -64,6 +64,7 @@ namespace GraphSearchApp
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.StackTrace);
                 //throw ex;
             }
         }
