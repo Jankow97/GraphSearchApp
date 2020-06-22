@@ -73,6 +73,7 @@
     <Compile Include="Algorithms\Interfaces\IGraphSearchExecute.cs" />
     <Compile Include="Algorithms\LeastCitiesAlgorithm.cs" />
     <Compile Include="Algorithms\ShortestRoutesAlgorithm.cs" />
+    <Compile Include="Algorithms\ShortestRoutesAlgorithmWithGeolocation.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -84,7 +85,9 @@
     <Compile Include="Dtos\ReadData.cs" />
     <Compile Include="Helpers\Interfaces\IMainWindowHelper.cs" />
     <Compile Include="Helpers\MainWindowHelper.cs" />
+    <Compile Include="Helpers\PriorityQueueHeap.cs" />
     <Compile Include="IO\Interfaces\ITextToGraph.cs" />
+    <Compile Include="IO\ReadGeolocationData.cs" />
     <Compile Include="IO\ReadStandardData.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

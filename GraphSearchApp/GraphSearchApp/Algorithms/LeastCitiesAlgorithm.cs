@@ -12,7 +12,7 @@ namespace GraphSearchApp.Algorithms
     {
         Queue<int> q = new Queue<int>();
         bool[] scheduled = null;
-        bool[] visited = null;
+        //bool[] visited = null;
         private int[] predecessor = null;
         private int[] distances = null;
         private int[] moves = null;
@@ -21,7 +21,6 @@ namespace GraphSearchApp.Algorithms
         {
             q = new Queue<int>();
             scheduled = new bool[graph.Count];
-            visited = new bool[graph.Count];
             predecessor = new int[graph.Count];
             distances = new int[graph.Count];
             moves = new int[graph.Count];
@@ -36,7 +35,6 @@ namespace GraphSearchApp.Algorithms
             while (q.Any() && q.Peek() != graphSearchOptions.EndingNode - 1)
             {
                 int currentNode = q.Dequeue();
-                //visited[currentNode - 1] = true;
 
                 List<Connection> connections = graph.GetNodeList(currentNode);
                 foreach (var node in connections)
@@ -72,14 +70,6 @@ namespace GraphSearchApp.Algorithms
             algorithmResult.CitiesTraverseOrder.Reverse();
             algorithmResult.ShortestRoute = distances[graphSearchOptions.EndingNode - 1];
             return algorithmResult;
-        }
-
-        private bool WasVisited(int node)
-        {
-            if (visited[node])
-                return true;
-            else
-                return false;
         }
 
         private bool WasScheduled(int node)

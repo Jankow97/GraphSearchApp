@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using GraphSearchApp.Algorithms;
 using GraphSearchApp.Algorithms.Interfaces;
@@ -19,13 +20,14 @@ namespace GraphSearchApp.Helpers
     {
         private readonly MainWindow _mainWindow;
         private IGraphSearchExecute _graphSearchExecute = new LeastCitiesAlgorithm();
+        private ITextToGraph _textToGraph = new ReadStandardData();
 
         public MainWindowHelper(MainWindow mw)
         {
             _mainWindow = mw;
         }
 
-        public void UploadData()
+        public async void UploadData()
         {
             string data = "";
 
@@ -33,12 +35,11 @@ namespace GraphSearchApp.Helpers
             if (openFileDialog.ShowDialog() == true)
             {
                 data = File.ReadAllText(openFileDialog.FileName);
-                _mainWindow.UploadedFileContentTb.Text = data;
+                //_mainWindow.UploadedFileContentTb.Text = data;
             }
             try
             {
-                ITextToGraph textToGraph = new ReadStandardData();
-                ReadData readData = textToGraph.ReadData(data);
+                ReadData readData = _textToGraph.ReadData(data);
                 if (readData.Graph == null || readData.GraphSearchOptions == null)
                 {
                     throw new Exception();
@@ -65,17 +66,19 @@ namespace GraphSearchApp.Helpers
 
         public void ChooseLeastCities()
         {
+            _textToGraph = new ReadStandardData();
             _graphSearchExecute = new LeastCitiesAlgorithm();
         }
 
         public void ChooseShortestRoutes()
         {
-            throw new NotImplementedException();
+            _graphSearchExecute = new ShortestRoutesAlgorithm();
         }
 
         public void ChooseShortestRoutesGeolocation()
         {
-            throw new NotImplementedException();
+            _textToGraph = new ReadGeolocationData();
+            _graphSearchExecute = new ShortestRoutesAlgorithmWithGeolocation();
         }
     }
 }

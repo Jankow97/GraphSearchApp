@@ -8,6 +8,9 @@ namespace GraphSearchApp.Dtos
 {
     public class Graph
     {
+        public int[] YGeolocations = new int[2000000];
+        public int[] XGeolocations = new int[2000000];
+
         private List<List<Connection>> AdjacencyList { get; set; }
 
         public Graph()
